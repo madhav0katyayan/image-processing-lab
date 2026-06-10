@@ -733,7 +733,7 @@
       <div class="vl-card mb-4 overflow-hidden animate-fadeInUp rounded-lg">
         <div class="px-4 py-3" style="background: linear-gradient(120deg, #021a2c, #064073, #0b60a8);">
           <h1 class="text-lg md:text-xl font-bold text-white text-center leading-snug">
-            To study the Load Characteristics of DC shunt generator
+            Sampling and Quantization
           </h1>
         </div>
       </div>
@@ -812,26 +812,45 @@
 <script>
 /* ------------------ 20 QUESTIONS ------------------ */
 const questions = [
-  {id:1,text:'Armature magnetic field in a DC generator produces which of the following effect?',choices:['A: It demagnetizes or reduces the main flux','B: It cross-magnetizes the main flux','C: It magnetizes or reinforces the main flux','D: Both (a) and (b)'],answer:'D',selected:null},
-  {id:2,text:'Copper losses in the armature of the DC shunt generator amount to which of the following percentages of full load losses? ',choices:['A: 5 to 10%','B: 10 to 20%','C: 20 to 30%','D: 30 to 40%'],answer:'C',selected:null},
-  {id:3,text:'In a DC generator, compared to the air gap under field poles, the interpole air gap is made:',choices:['A: Larger','B: Smaller','C: The same','D: Much smaller'],answer:'A',selected:null},
-  {id:4,text:'If the field current of a DC shunt generator is slightly reduced during operation, the terminal voltage will:',choices:['A:  Increase sharply','B: Decrease gradually','C: Remain unchanged','D: Become zero'],answer:'B',selected:null},
-  {id:5,text:'The yoke of a DC generator is made of cast iron because:',choices:['A: It is cheaper','B: It completes the magnetic path','C: It gives mechanical protection','D: All of these'],answer:'D',selected:null},
-  {id:6,text:'What happens to the terminal voltage of a DC shunt generator as load increases?',choices:['A: It increases','B: It decreases','C: It remains constant','D: It first increases then decreases'],answer:'B',selected:null},
-  {id:7,text:'The main reason for the drop in terminal voltage under load is:',choices:['A: Armature resistance drop and armature reaction','B: Decrease in field resistance','C: Increase in field current','D: Decrease in speed'],answer:'A',selected:null},
-  {id:8,text:'What does the external characteristic curve of a DC shunt generator represent?',choices:['A: E vs Ia','B: V vs IL','C: E vs If','D: V vs N'],answer:'B',selected:null},
-  {id:9,text:'If the terminal voltage of the generator falls sharply with increasing load, it indicates:',choices:['A: High armature resistance','B: Poor voltage regulation','C: Weak residual magnetism','D: Low field current'],answer:'B',selected:null},
-  {id:10,text:'How can the voltage regulation of a DC shunt generator be improved?',choices:['A: By increasing armature resistance','B: By increasing field excitation','C: By reducing field current','D: By increasing speed'],answer:'B',selected:null},
-  {id:11,text:'In a well-designed DC shunt generator, the voltage drop from no-load to full-load is typically:',choices:['A: Negligible','B: Around 5–10%','C: 30–40%','D: 50–60%'],answer:'B',selected:null},
-  {id:12,text:'During the experiment, the load on the DC shunt generator is varied by:',choices:['A: Changing the armature speed','B: Adjusting field rheostat','C: Varying the load resistance across armature','D: Changing supply voltage'],answer:'C',selected:null},
-  {id:13,text:'The reason for using a shunt field regulator in the experiment is to:',choices:['A: Protect the generator','B: Vary the excitation current','C: Maintain constant load','D: Reduce armature reaction'],answer:'B',selected:null},
-  {id:14,text:'When load increases, armature current increases. This causes:',choices:['A: More voltage drop across armature resistance','B: More field flux','C: Less terminal current','D: Constant emf'],answer:'A',selected:null},
-  {id:15,text:'The generated emf in the generator is directly proportional to:',choices:['A: Load current','B: Armature resistance','C: Speed and field flux','D: Terminal voltage'],answer:'C',selected:null},
-  {id:16,text:'In the experiment, the field current is kept constant to obtain:',choices:['A: Open circuit characteristics','B: Load characteristics','C: Internal characteristics','D: Magnetization curve'],answer:'B',selected:null},
-  {id:17,text:'The curve plotted between terminal voltage and load current is generally:',choices:['A: Straight line','B: Slightly drooping curve','C: Parabolic','D: Exponential'],answer:'B',selected:null},
-  {id:18,text:'In the experiment, if the speed of the generator fluctuates, it will:',choices:['A: Have no effect on voltage','B: Cause incorrect load characteristics','C: Reduce field resistance','D: Increase copper loss'],answer:'B',selected:null},
-  {id:19,text:'The load characteristics help determine:',choices:['A: Efficiency and voltage regulation','B: Field winding design','C: Commutator dimensions','D: Mechanical losses'],answer:'A',selected:null},
-  {id:20,text:'Which safety precaution is essential while performing this experiment?',choices:['A: Start without excitation','B: Never exceed rated load current','C: Disconnect load suddenly','D: Operate at maximum speed'],answer:'B',selected:null},
+  {id:1,text:'In the sampling experiment, the main purpose of changing the scale factor is to study:',choices:['A) Image compression ratio','B) Change in spatial resolution','C) Change in color depth','D) Change in file format'],answer:'B',selected:null},
+
+  {id:2,text:'When the scale factor is set below 1, the image generally becomes:',choices:['A) Larger and sharper','B) Smaller with reduced detail','C) Color inverted','D) Binary'],answer:'B',selected:null},
+
+  {id:3,text:'Which interpolation method is the fastest and simplest in the simulation?',choices:['A) Cubic','B) Linear','C) Nearest','D) Bilinear'],answer:'C',selected:null},
+
+  {id:4,text:'Linear interpolation is also known as:',choices:['A) Bicubic interpolation','B) Bilinear interpolation','C) Nearest interpolation','D) Median interpolation'],answer:'B',selected:null},
+
+  {id:5,text:'Cubic interpolation generally gives:',choices:['A) The lowest quality output','B) The most blocky result','C) Better smoothness and visual quality','D) No change in image size'],answer:'C',selected:null},
+
+  {id:6,text:'If the scale factor is 2, the output image size will usually be:',choices:['A) Half of the original size','B) Same as original size','C) Double in each dimension','D) Zero'],answer:'C',selected:null},
+
+  {id:7,text:'The sampling experiment mainly demonstrates the effect of changing:',choices:['A) Intensity values','B) Pixel spacing','C) File extension','D) Image brightness only'],answer:'B',selected:null},
+
+  {id:8,text:'Which of the following is a correct observation when an image is downsampled?',choices:['A) More pixels are added','B) Spatial detail decreases','C) Bit depth increases','D) The image becomes binary'],answer:'B',selected:null},
+
+  {id:9,text:'Why is interpolation needed in resizing an image?',choices:['A) To remove the file header','B) To estimate pixel values at new positions','C) To convert RGB to CMYK','D) To increase file size'],answer:'B',selected:null},
+
+  {id:10,text:'Which method is usually preferred for high-quality enlargement of photographs?',choices:['A) Nearest','B) Linear','C) Cubic','D) Thresholding'],answer:'C',selected:null},
+
+  {id:11,text:'Using the formula L = 2^n, how many bits per pixel are required to represent exactly 64 distinct grey levels?',choices:['A) 4 bits','B) 5 bits','C) 6 bits','D) 7 bits'],answer:'C',selected:null},
+
+  {id:12,text:'A 512×512 pixel image is quantized at 2 bits per pixel. What is the total number of bits required to store this image (ignoring any header or compression)?',choices:['A) 262,144 bits','B) 524,288 bits','C) 1,048,576 bits','D) 2,097,152 bits'],answer:'B',selected:null},
+
+  {id:13,text:'In the quantization tab, bit depth controls:',choices:['A) Spatial resolution','B) Number of intensity levels','C) Image dimensions','D) Sampling frequency'],answer:'B',selected:null},
+
+  {id:14,text:'A 2-bit quantized image can represent:',choices:['A) 2 levels','B) 4 levels','C) 8 levels','D) 16 levels'],answer:'B',selected:null},
+
+  {id:15,text:'The default 8-Bit quantization in the simulation produces how many intensity levels, and why is this considered perceptually adequate for most images?',choices:['A) 64 levels — sufficient for binary images','B) 128 levels — matches the human eye dynamic range','C) 256 levels — sufficient for the human eye to perceive smooth gradients','D) 512 levels — required for HDR imaging'],answer:'C',selected:null},
+
+  {id:16,text:'A higher bit depth generally gives:',choices:['A) Fewer gray levels','B) More gray levels and smoother tone transitions','C) Blockier output','D) Lower spatial resolution'],answer:'B',selected:null},
+
+  {id:17,text:'The banding effect in a low-bit image is also called:',choices:['A) Aliasing','B) Posterization','C) Blurring','D) Upsampling'],answer:'B',selected:null},
+
+  {id:18,text:'Which image will show quantization banding most clearly?',choices:['A) Binary logo','B) Smooth gradient image','C) Text file','D) Noisy spreadsheet image'],answer:'B',selected:null},
+
+  {id:19,text:'Sampling and quantization together are used to create:',choices:['A) A continuous analog image','B) A digital image','C) A compressed video','D) A binary signal only'],answer:'B',selected:null},
+
+  {id:20,text:'The overall objective of this simulation is to understand how changing sampling and quantization affects:',choices:['A) Network speed','B) Image quality','C) Keyboard input','D) File names'],answer:'B',selected:null}
 ];
 
 /* ------------------ SETTINGS ------------------ */

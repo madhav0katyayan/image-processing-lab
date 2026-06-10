@@ -733,7 +733,7 @@
       <div class="vl-card mb-4 overflow-hidden animate-fadeInUp rounded-lg">
         <div class="px-4 py-3" style="background: linear-gradient(120deg, #021a2c, #064073, #0b60a8);">
           <h1 class="text-lg md:text-xl font-bold text-white text-center leading-snug">
-            To study the Load Characteristics of DC shunt generator
+            Sampling and Quantization
           </h1>
         </div>
       </div>
@@ -810,26 +810,46 @@
 <script>
 /* ------------------ 20 QUESTIONS ------------------ */
  const questions = [
-  {id:1,text:'DC shunt generator has terminal voltage versus load current characteristic which is',choices:['A. Constant','B. Slightly drooping','C. Slightly rising','D. Highly drooping'],answer:'B',selected:null},
-  {id:2,text:'Which dc generator gives constant output voltage at all loads?',choices:['A. Shunt generator','B. Series generator','C. Short shunt compound generator','D. Level compound generator'],answer:'D',selected:null},
-  {id:3,text:'In a DC shunt generator, the shunt field current mainly depends on:',choices:['A. Load current','B. Terminal voltage','C. Armature resistance','D. Speed only'],answer:'B',selected:null},
-  {id:4,text:'When a DC shunt generator is loaded, which loss increases significantly with load current?',choices:['A. Iron loss','B. Mechanical loss','C. Armature copper loss','D. Field copper loss'],answer:'C',selected:null},
-  {id:5,text:'The voltage regulation of a DC shunt generator is defined as:',choices:['A.  Change in speed from no-load to full-load','B. Ratio of generated emf to terminal voltage','C. Percentage change in terminal voltage from no-load to full-load','D. Ratio of load current to field current'],answer:'C',selected:null},
-  {id:6,text:'Main function of DC generator is:',choices:['A) Convert electrical→mechanical','B) Convert mechanical→electrical','C) Step up voltage','D) Step down current'],answer:'B',selected:null},
-  {id:7,text:'Field winding of DC shunt generator is connected:',choices:['A) In series','B) In parallel','C) Across load','D) In series with load'],answer:'B',selected:null},
-  {id:8,text:'Generated emf in DC generator:',choices:['A) E=V+IaRa','B) E=kΦN','C) E=V/I','D) E=P/I'],answer:'B',selected:null},
-  {id:9,text:'Armature reaction causes:',choices:['A) Increase flux','B) Decrease flux','C) No effect','D) Constant emf'],answer:'B',selected:null},
-  {id:10,text:'Load characteristic of DC shunt generator is:',choices:['A) Ia–If','B) V–IL','C) IL–speed','D) torque–speed'],answer:'B',selected:null},
-  {id:11,text:'As load current increases terminal voltage:',choices:['A) Increases','B) Decreases','C) Constant','D) Zero'],answer:'B',selected:null},
-  {id:12,text:'Drop in terminal voltage due to:',choices:['A) Armature reaction + resistance','B) Commutator resistance','C) Eddy current','D) Field resistance'],answer:'A',selected:null},
-  {id:13,text:'Residual magnetism needed for:',choices:['A) Commutation','B) Self-excitation','C) Speed control','D) Field regulation'],answer:'B',selected:null},
-  {id:14,text:'OCC curve represents:',choices:['A) V vs If (constant speed)','B) V vs IL','C) I vs R','D) torque vs speed'],answer:'A',selected:null},
-  {id:15,text:'Internal characteristic shows:',choices:['A) Eg–If','B) V–If','C) Eg–Ia','D) V–Ia'],answer:'C',selected:null},
-  {id:16,text:'External characteristic shows:',choices:['A) Eg–If','B) V–IL','C) Eg–Ia','D) torque–speed'],answer:'B',selected:null},
-  {id:17,text:'Losses in DC generator:',choices:['A) Copper','B) Iron','C) Mechanical','D) All'],answer:'D',selected:null},
-  {id:18,text:'Load test determines:',choices:['A) Armature efficiency','B) Speed regulation','C) Load characteristics','D) Field efficiency'],answer:'C',selected:null},
-  {id:19,text:'Field current in DC shunt generator is:',choices:['A) Constant','B) Depends on speed','C) Depends on load','D) Zero'],answer:'C',selected:null},
-  {id:20,text:'Terminal voltage at full load:',choices:['A) = Eg','B) > Eg','C) < Eg','D) Independent'],answer:'C',selected:null},
+  {id:1,text:'What is the primary purpose of image sampling?',choices:['A) Reduce image brightness','B) Convert a continuous image into discrete pixels','C) Increase image size','D) Remove noise'],answer:'B',selected:null},
+
+  {id:2,text:'Sampling mainly affects which property of a digital image?',choices:['A) Color depth','B) Spatial resolution','C) Compression ratio','D) Brightness'],answer:'B',selected:null},
+
+  {id:3,text:'A higher sampling rate generally results in:',choices:['A) Lower resolution','B) Better image detail','C) More quantization error','D) Smaller image size'],answer:'B',selected:null},
+
+  {id:4,text:'According to the Nyquist theorem, the sampling frequency should be at least:',choices:['A) Equal to the highest frequency','B) Half the highest frequency','C) Twice the highest frequency','D) Four times the highest frequency'],answer:'C',selected:null},
+
+  {id:5,text:'What occurs when an image is sampled below the Nyquist rate?',choices:['A) Sharpening','B) Aliasing','C) Enhancement','D) Segmentation'],answer:'B',selected:null},
+
+  {id:6,text:'Which of the following is an example of aliasing?',choices:['A) Smooth shading','B) Moiré patterns','C) Increased contrast','D) Histogram equalization'],answer:'B',selected:null},
+
+  {id:7,text:'Quantization is the process of:',choices:['A) Increasing image resolution','B) Selecting pixels','C) Mapping continuous intensity values into discrete levels','D) Rotating an image'],answer:'C',selected:null},
+
+  {id:8,text:'The number of bits used to represent pixel intensity is called:',choices:['A) Sampling rate','B) Spatial frequency','C) Bit depth','D) Pixel density'],answer:'C',selected:null},
+
+  {id:9,text:'An 8-bit grayscale image can represent:',choices:['A) 16 levels','B) 64 levels','C) 128 levels','D) 256 levels'],answer:'D',selected:null},
+
+  {id:10,text:'Increasing quantization levels will generally:',choices:['A) Improve image quality','B) Reduce image quality','C) Reduce resolution','D) Cause aliasing'],answer:'A',selected:null},
+
+  {id:11,text:'Lower quantization levels may cause:',choices:['A) Better contrast','B) False contouring','C) Increased resolution','D) Noise removal'],answer:'B',selected:null},
+
+  {id:12,text:'Which process affects intensity representation?',choices:['A) Quantization','B) Sampling','C) Interpolation','D) Cropping'],answer:'A',selected:null},
+
+  {id:13,text:'Which application requires high-quality sampling and quantization for diagnosis?',choices:['A) Gaming','B) Medical Imaging','C) Social Media','D) Animation'],answer:'B',selected:null},
+
+  {id:14,text:'Which artifact appears due to insufficient quantization levels?',choices:['A) Motion Blur','B) False Contouring','C) Edge Detection','D) Thresholding'],answer:'B',selected:null},
+
+  {id:15,text:'The process of converting an analog image into digital form requires:',choices:['A) Sampling and Quantization','B) Compression and Encryption','C) Filtering and Sharpening','D) Cropping and Scaling'],answer:'A',selected:null},
+
+  {id:16,text:'Which statement is correct?',choices:['A) Sampling affects resolution; quantization affects intensity levels.','B) Sampling affects intensity; quantization affects resolution.','C) Both affect only file size.','D) Neither affects image quality.'],answer:'A',selected:null},
+
+  {id:17,text:'Which component of a digital image is affected by sampling?',choices:['A) Spatial information','B) File name','C) Metadata','D) Image format'],answer:'A',selected:null},
+
+  {id:18,text:'A digital image with more pixels generally has:',choices:['A) Lower resolution','B) Higher spatial resolution','C) Lower bit depth','D) Fewer details'],answer:'B',selected:null},
+
+  {id:19,text:'What is the minimum number of bits required to represent 16 intensity levels?',choices:['A) 2','B) 3','C) 4','D) 8'],answer:'C',selected:null},
+
+  {id:20,text:'An image represented with 1-bit depth can display:',choices:['A) 2 intensity levels','B) 4 intensity levels','C) 8 intensity levels','D) 16 intensity levels'],answer:'A',selected:null},
+
 ];
 
 /* ------------------ SETTINGS ------------------ */
