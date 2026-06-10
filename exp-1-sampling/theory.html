@@ -718,8 +718,14 @@
         <a href="#" class="hover:text-blue-600 transition-colors">Home</a>
         <span>></span>
         <a href="#" class="hover:text-blue-600">
-Electrical Machines Lab</a>
+Image Processing Lab</a>
         <span>></span>
+
+        <a href="#" class="hover:text-blue-600">
+Sampling and Quantization</a>
+        <span>></span>
+
+
         <span class="text-gray-800 font-medium">Theory</span>
       </nav>
 
@@ -732,30 +738,53 @@ Electrical Machines Lab</a>
         </div>
       </div>
 
-      <!-- Theory Content -->
-<section class="section-content vl-card p-6 animate-fadeInUp">
+<!-- Theory Content -->
+<section class="section-content vl-card p-4 animate-fadeInUp">
 
-  <div class="space-y-8 text-gray-700 text-lg leading-relaxed">
+<div class="text-gray-700 text-lg leading-relaxed">
 
-   <style>
+<style>
 .content{
-    max-width:1000px;
-    margin:auto;
-    padding:20px;
+    width:100%;
+    max-width:none;
+    margin:0;
+    padding:0;
     line-height:1.8;
     text-align:justify;
 }
 
+.content h2:first-child{
+    margin-top:0 !important;
+}
+
 .content h2{
     font-size:2rem;
-    margin-top:30px;
-    margin-bottom:15px;
+    margin-top:24px;
+    margin-bottom:12px;
     color:#222;
+    font-weight:700;
 }
 
 .content p,
 .content li{
     font-size:1.1rem;
+}
+
+.content ul{
+    list-style:disc !important;
+    padding-left:40px !important;
+    margin:12px 0;
+}
+
+.content ol{
+    list-style:decimal !important;
+    padding-left:40px !important;
+    margin:12px 0;
+}
+
+.content li{
+    display:list-item !important;
+    margin-bottom:8px;
 }
 
 .content img{
@@ -771,22 +800,20 @@ Electrical Machines Lab</a>
 }
 
 .content figcaption{
-    font-weight:bold;
-    font-size:1rem;
+    color:#000 !important;
+    font-weight:700 !important;
+    font-size:1rem !important;
     margin-top:10px;
+    opacity:1 !important;
 }
 
-.content ul,
-.content ol{
-    padding-left:25px;
+.content figcaption b{
+    color:#000 !important;
 }
 </style>
 
-<section class="content-header">
-    <h1 class="main-title">
-        Sampling and Quantization
-    </h1>
-</section>
+<div class="content">
+
 
 <style>
 .main-title{
@@ -816,33 +843,27 @@ Electrical Machines Lab</a>
         The process of converting a continuous analog image into a digital format involves two crucial steps:
     </p>
 
-    <ol>
-        <li>
-            <b>Sampling:</b> It refers to selecting discrete points from the continuous image
-            to create a digital representation.
-        </li>
+    <p><b>1. Sampling:</b> It refers to selecting discrete points from the continuous image
+        to create a digital representation.</p>
 
-        <li>
-            <b>Quantization:</b> It involves mapping a range of intensity values to a limited
-            number of discrete levels, reducing the data required for storage and processing.
-        </li>
-    </ol>
+    <p><b>2. Quantization:</b> It involves mapping a range of intensity values to a limited
+        number of discrete levels, reducing the data required for storage and processing.</p>
 
     <figure>
         <img src="images/s&q.png" alt="Sampling and Quantization">
         <figcaption>
-            Fig. 1 Visual representation of image sampling and quantization
+            <b>Fig. 1 Visual representation of image sampling and quantization</b>
         </figcaption>
     </figure>
 
     <ul>
         <li>
-            <b>Top row:</b> Shows how reducing the sampling rate (higher sampling factor)
+            <b>Top Row:</b> Shows how reducing the sampling rate (higher sampling factor)
             affects image resolution. As the factor increases, image details are lost.
         </li>
 
         <li>
-            <b>Bottom row:</b> Displays the impact of reducing quantization levels (bit depth).
+            <b>Bottom Row:</b> Displays the impact of reducing quantization levels (bit depth).
             With fewer levels, the image becomes more posterized, losing smooth transitions in shades.
         </li>
     </ul>
@@ -855,37 +876,35 @@ Electrical Machines Lab</a>
         the spatial resolution of the digital image.
     </p>
 
-    <ol>
-        <li>
-            <b>Spatial Resolution and Sampling Rate</b><br>
-            Spatial resolution defines the number of pixels used to represent an image.
-            The sampling rate determines how frequently pixels are taken from the continuous image.
-            A higher sampling rate results in finer details and better quality, whereas a lower
-            sampling rate may lead to loss of critical image information.
-        </li>
+    <p>
+        <b>1. Spatial Resolution and Sampling Rate</b><br>
+        Spatial resolution defines the number of pixels used to represent an image.
+        The sampling rate determines how frequently pixels are taken from the continuous image.
+        A higher sampling rate results in finer details and better quality, whereas a lower
+        sampling rate may lead to loss of critical image information.
+    </p>
 
-        <li>
-            <b>The Nyquist Sampling Theorem</b><br>
-            To accurately represent an image without introducing distortions, the Nyquist theorem
-            states that the sampling frequency should be at least twice the highest frequency present
-            in the image. If the sampling rate is too low, high-frequency components will be
-            misrepresented as lower frequencies, leading to aliasing artifacts.
-        </li>
+    <p>
+        <b>2. The Nyquist Sampling Theorem</b><br>
+        To accurately represent an image without introducing distortions, the Nyquist theorem
+        states that the sampling frequency should be at least twice the highest frequency present
+        in the image. If the sampling rate is too low, high-frequency components will be
+        misrepresented as lower frequencies, leading to aliasing artifacts.
+    </p>
 
-        <li>
-            <b>Aliasing and Its Effects</b><br>
-            Aliasing occurs when the sampling rate is insufficient to capture the high-frequency
-            details in an image, resulting in distortions such as Moiré patterns, jagged edges,
-            and loss of fine details.
-        </li>
-    </ol>
+    <p>
+        <b>3. Aliasing and Its Effects</b><br>
+        Aliasing occurs when the sampling rate is insufficient to capture the high-frequency
+        details in an image, resulting in distortions such as Moiré patterns, jagged edges,
+        and loss of fine details.
+    </p>
 
     <figure>
         <img src="images/sampling.png" alt="Image Sampling">
         <figcaption>
-            Fig. 2 Generating a digital image (a) Continuous image (b) A scan line from A to B
+            <b>Fig. 2 Generating a digital image (a) Continuous image (b) A scan line from A to B
             in the continuous image, used to illustrate the concepts of sampling and quantization
-            (c) Sampling and Quantization (d) Digital scan line
+            (c) Sampling and Quantization (d) Digital scan line</b>
         </figcaption>
     </figure>
 
@@ -896,55 +915,46 @@ Electrical Machines Lab</a>
         converting a continuous range of values into a finite set.
     </p>
 
-    <ol>
+    <p>
+        <b>1. Quantization Levels and Bit Depth</b><br>
+        The number of quantization levels defines how accurately pixel intensities are represented.
+        The bit depth of an image refers to the number of bits used to store the intensity of each pixel.
+    </p>
+
+    <p>
+        <b>2. Effects of Quantization</b>
+    </p>
+
+    <ul>
         <li>
-            <b>Quantization Levels and Bit Depth</b><br>
-            The number of quantization levels defines how accurately pixel intensities are represented.
-            The bit depth of an image refers to the number of bits used to store the intensity of each pixel.
+            Higher Quantization Levels → More accurate intensity representation,
+            higher quality, but larger file size.
         </li>
 
         <li>
-            <b>Effects of Quantization</b>
-            <ul>
-                <li>
-                    Higher Quantization Levels → More accurate intensity representation,
-                    higher quality, but larger file size.
-                </li>
-
-                <li>
-                    Lower Quantization Levels → Reduces file size but can cause visual
-                    artifacts such as false contouring and loss of detail.
-                </li>
-            </ul>
+            Lower Quantization Levels → Reduces file size but can cause visual
+            artifacts such as false contouring and loss of detail.
         </li>
-    </ol>
+    </ul>
 
     <figure>
         <img src="images/continuos.jpg" alt="Continuous Image">
         <figcaption>
-            Fig. 3 (a) Continuous image projected onto a sensor array
-            (b) Result of image sampling and quantization.
+            <b>Fig. 3 (a) Continuous image projected onto a sensor array
+            (b) Result of image sampling and quantization.</b>
         </figcaption>
     </figure>
 
     <h2>Applications of Image Sampling and Quantization</h2>
 
     <ul>
-        <li>
-            Medical Imaging - Ensures accurate diagnosis while minimizing storage and processing requirements.
-        </li>
+        <li>Medical Imaging - Ensures accurate diagnosis while minimizing storage and processing requirements.</li>
 
-        <li>
-            Image Compression - Used in JPEG and PNG formats to optimize storage without significant quality loss.
-        </li>
+        <li>Image Compression - Used in JPEG and PNG formats to optimize storage without significant quality loss.</li>
 
-        <li>
-            Computer Vision and AI - Properly sampled and quantized images improve object detection and machine learning accuracy.
-        </li>
+        <li>Computer Vision and AI - Properly sampled and quantized images improve object detection and machine learning accuracy.</li>
 
-        <li>
-            Remote Sensing - Satellite images require high-resolution sampling for climate monitoring and urban planning.
-        </li>
+        <li>Remote Sensing - Satellite images require high-resolution sampling for climate monitoring and urban planning.</li>
     </ul>
 
     <h2>Conclusion</h2>

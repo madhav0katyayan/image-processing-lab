@@ -812,8 +812,12 @@
         <nav class="mb-6 text-sm sm:text-base text-gray-600 animate-slideInLeft flex flex-wrap items-center gap-x-2 gap-y-1">
         <a href="#" class="hover:text-blue-600 transition-colors">Home</a>
         <span>></span>
-        <a href="#" class="hover:text-blue-600">Electrical Machines Lab</a>
+        <a href="#" class="hover:text-blue-600">Image Processing Labs</a>
         <span>></span>
+
+        <a href="#" class="hover:text-blue-600">Sampling and Quantization</a>
+        <span>></span>
+
         <span class="text-gray-800 font-medium">Procedure</span>
       </nav>
 
@@ -826,69 +830,79 @@
         </div>
       </div>
 
-      <!-- Procedure Steps -->
-      <section class="section-content vl-card p-4 sm:p-6 animate-fadeInUp procedure-content">
-        
+     <!-- Procedure Steps -->
+<section class="section-content vl-card p-4 animate-fadeInUp procedure-content">
 
-        <div class="procedure-body space-y-6 sm:space-y-8 text-gray-700 text-base sm:text-lg leading-relaxed">
+    <div class="procedure-body text-gray-700 text-base sm:text-lg leading-relaxed">
 
-        
-         
-       
-<!-- Main content -->
-<section class="content">
-
-    <style>
-        .content h2 {
-            text-align: center;
-            font-size: 4rem;
-            font-weight: 800;
-            margin-top: 20px;
-            margin-bottom: 50px;
+        <style>
+        .content{
+            width:100%;
+            max-width:none;
+            margin:0 !important;
+            padding:0 !important;
+            line-height:1.8;
+            text-align:justify;
         }
 
-        .content h3 {
-            font-size: 2.3rem;
-            font-weight: 700;
-            margin-top: 25px;
-            margin-bottom: 15px;
+        .content h2{
+            font-size:2rem;
+            font-weight:700;
+            color:#222;
+            margin:0 0 12px 0 !important;
+            padding:0 !important;
+            text-align:left;
         }
 
-        .content ol {
-            list-style-type: decimal !important;
-            list-style-position: outside !important;
-            padding-left: 40px !important;
-            margin-left: 20px !important;
-            margin-bottom: 35px;
+        .content h3{
+            font-size:1.4rem;
+            font-weight:700;
+            color:#222;
+            margin-top:20px;
+            margin-bottom:12px;
         }
 
-        .content li {
-            display: list-item !important;
-            font-size: 1.8rem;
-            line-height: 1.8;
-            text-align: justify;
-            margin-bottom: 10px;
+        .content ol{
+            list-style:decimal !important;
+            padding-left:40px !important;
+            margin:12px 0 20px 0 !important;
         }
-    </style>
 
-    <h2>Procedure</h2>
+        .content li{
+            display:list-item !important;
+            font-size:1.1rem;
+            margin-bottom:8px;
+            line-height:1.8;
+            color:#000;
+        }
+        </style>
 
-    <h3>For Sampling:</h3>
-    <ol>
-        <li>Select an image from the available options or upload one using the <b>Upload File</b> button.</li>
-        <li>Set the scale factor.</li>
-        <li>Select the sampling method.</li>
-        <li>Click the <b>Process</b> button to continue.</li>
-        <li>Click the <b>Print</b> button to print the result.</li>
-    </ol>
+        <div class="content">
 
-    <h3>For Quantization:</h3>
-    <ol>
-        <li>Select an image from the available options or upload one using the <b>Upload File</b> button.</li>
-        <li>Select the quantization mode.</li>
-        <li>Click the <b>Process</b> button to continue.</li>
-        <li>Click the <b>Print</b> button to print the result.</li>
-    </ol>
+            <h2>Procedure</h2>
+
+            <h3>For Sampling</h3>
+
+            <ol>
+                <li>Select an image from the available options or upload one using the <b>Upload File</b> button.</li>
+                <li>Set the scale factor.</li>
+                <li>Select the sampling method.</li>
+                <li>Click the <b>Process</b> button to continue.</li>
+                <li>Click the <b>Print</b> button to print the result.</li>
+            </ol>
+
+            <h3>For Quantization</h3>
+
+            <ol>
+                <li>Select an image from the available options or upload one using the <b>Upload File</b> button.</li>
+                <li>Select the quantization mode.</li>
+                <li>Click the <b>Process</b> button to continue.</li>
+                <li>Click the <b>Print</b> button to print the result.</li>
+            </ol>
+
+        </div>
+
+    </div>
 
 </section>
 
