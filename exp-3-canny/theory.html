@@ -722,7 +722,7 @@ Image Processing Lab</a>
         <span>></span>
 
         <a href="#" class="hover:text-blue-600">
-Sampling and Quantization</a>
+Canny Edge Detection</a>
         <span>></span>
 
 
@@ -733,7 +733,7 @@ Sampling and Quantization</a>
       <div class="vl-card mb-4 overflow-hidden animate-fadeInUp rounded-lg">
         <div class="px-4 py-3" style="background: linear-gradient(120deg, #021a2c, #064073, #0b60a8);">
           <h1 class="text-lg md:text-xl font-bold text-white text-center leading-snug">
-            Sampling and Quantization
+            Canny Edge Detection
           </h1>
         </div>
       </div>
@@ -761,6 +761,14 @@ Sampling and Quantization</a>
     font-size:2rem;
     margin-top:24px;
     margin-bottom:12px;
+    color:#222;
+    font-weight:700;
+}
+
+.content h3{
+    font-size:1.5rem;
+    margin-top:20px;
+    margin-bottom:10px;
     color:#222;
     font-weight:700;
 }
@@ -804,171 +812,399 @@ Sampling and Quantization</a>
     font-weight:700 !important;
     font-size:1rem !important;
     margin-top:10px;
-    opacity:1 !important;
 }
 
-.content figcaption b{
-    color:#000 !important;
-}
-</style>
-
-<div class="content">
-
-
-<style>
-.main-title{
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 700;
-    color: #222;
-    margin: 20px 0 30px 0;
-    letter-spacing: 1px;
-    line-height: 1.3;
+.content table{
+    width:100%;
+    border-collapse:collapse;
+    margin:20px 0;
 }
 
-@media (max-width: 768px){
-    .main-title{
-        font-size: 2.2rem;
-    }
+.content table,
+.content th,
+.content td{
+    border:1px solid #000;
+}
+
+.content th,
+.content td{
+    padding:10px;
+    text-align:left;
 }
 </style>
 
 <div class="content">
 
-    <h2>Introduction</h2>
+<h2>Introduction</h2>
+
+<p>
+Image segmentation is the division of an image into regions or categories, which correspond to different objects or parts of objects. Every pixel in an image is allocated to one of these categories.
+</p>
+
+<p>A good segmentation is typically one in which:</p>
+
+<ul>
+    <li>Pixels in the same category have similar grey-scale or multivariate values and form a connected region.</li>
+    <li>Neighbouring pixels belonging to different categories have dissimilar values.</li>
+</ul>
+
+<h2>Edge Based Image Segmentation</h2>
+
+<p>
+Edge-based segmentation is one of the most popular implementations of segmentation in image processing. It focuses on identifying the edges of different objects in an image. This is a crucial step because edges contain significant information about object boundaries and features.
+</p>
+
+<p>
+Edge detection helps remove unwanted and unnecessary information from an image, reducing its complexity and making analysis easier. Algorithms used in edge-based segmentation identify edges based on differences in texture, contrast, grey level, colour, saturation, and other image properties.
+</p>
+
+<h2>Gradient</h2>
+
+<p>
+In image processing, a gradient refers to the rate of change of intensity in an image. Mathematically, the gradient is a vector field that points in the direction of the greatest rate of increase of intensity, while its magnitude represents the rate of change in that direction.
+</p>
+
+<p>
+For edge detection, gradients are important because edges generally occur where there is a significant change in pixel intensity.
+</p>
+
+<center style="margin:25px 0;">
+    <math display="block">
+<mi>∇</mi><mi>f</mi><mo>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>)</mo>
+<mo>=</mo>
+<mo>[</mo>
+<mfrac><mi>∂f</mi><mi>∂x</mi></mfrac>
+<mo>,</mo>
+<mfrac><mi>∂f</mi><mi>∂y</mi></mfrac>
+<mo>]</mo>
+</math>
+</center>
+
+<p>Where:</p>
+
+<ul>
+    <li>∂f/∂x : Partial derivative in the horizontal direction.</li>
+    <li>∂f/∂y : Partial derivative in the vertical direction.</li>
+</ul>
+
+<p>The magnitude of the gradient is:</p>
+
+<center style="margin:25px 0;">
+    <math display="block">
+<mo stretchy="false">|</mo>
+<mi>∇f</mi>
+<mo stretchy="false">|</mo>
+<mo>=</mo>
+<msqrt>
+<msup>
+<mfrac><mi>∂f</mi><mi>∂x</mi></mfrac>
+<mn>2</mn>
+</msup>
+<mo>+</mo>
+<msup>
+<mfrac><mi>∂f</mi><mi>∂y</mi></mfrac>
+<mn>2</mn>
+</msup>
+</msqrt>
+</math>
+</center>
+
+<p>The direction of the gradient is:</p>
+
+<center style="margin:25px 0;">
+    <math display="block">
+<mi>θ</mi><mo>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>)</mo>
+<mo>=</mo>
+<msup><mo>tan</mo><mn>-1</mn></msup>
+<mo>(</mo>
+<mfrac>
+<mrow><mfrac><mi>∂f</mi><mi>∂y</mi></mfrac></mrow>
+<mrow><mfrac><mi>∂f</mi><mi>∂x</mi></mfrac></mrow>
+</mfrac>
+<mo>)</mo>
+</math>
+</center>
+
+<h2>Steps in Edge Detection</h2>
+
+<ol>
+    <li>
+        <b>Filtering:</b> Filtering is used to improve edge detector performance in the presence of noise. However, there is a trade-off between noise reduction and edge strength.
+    </li>
+
+    <li>
+        <b>Enhancement:</b> Enhancement emphasizes pixels where there is a significant change in local intensity values, usually by computing gradient magnitude.
+    </li>
+
+    <li>
+        <b>Detection:</b> Detection identifies pixels that actually belong to edges, often using thresholding techniques.
+    </li>
+
+    <li>
+        <b>Localization:</b> Localization estimates the exact edge position and orientation with high precision.
+    </li>
+</ol>
+
+<h2>Edge Detectors</h2>
+
+<ol>
+    <li>
+        First-Order Derivative
+        <ul>
+            <li>Roberts</li>
+            <li>Sobel</li>
+            <li>Prewitt</li>
+        </ul>
+    </li>
+
+    <li>
+        Second-Order Derivative
+        <ul>
+            <li>Laplacian</li>
+        </ul>
+    </li>
+
+    <li>Canny</li>
+
+    <li>Morphological Operations</li>
+</ol>
+
+<figure>
+    <img src="images/img1.png" alt="Edge Detection">
+    <figcaption>
+        <b>Fig. 1 Edge Detection Result for Medical Image</b>
+    </figcaption>
+</figure>
+
+<h2>Canny Edge Detector</h2>
 
     <p>
-        The digital representation of images is fundamental to numerous applications,
-        including medical imaging, satellite photography, remote sensing, and computer vision.
-        The process of converting a continuous analog image into a digital format involves two crucial steps:
-    </p>
-
-    <p><b>1. Sampling:</b> It refers to selecting discrete points from the continuous image
-        to create a digital representation.</p>
-
-    <p><b>2. Quantization:</b> It involves mapping a range of intensity values to a limited
-        number of discrete levels, reducing the data required for storage and processing.</p>
-
-    <figure>
-        <img src="images/s&q.png" alt="Sampling and Quantization">
-        <figcaption>
-            <b>Fig. 1 Visual representation of image sampling and quantization</b>
-        </figcaption>
-    </figure>
-
-    <ul>
-        <li>
-            <b>Top Row:</b> Shows how reducing the sampling rate (higher sampling factor)
-            affects image resolution. As the factor increases, image details are lost.
-        </li>
-
-        <li>
-            <b>Bottom Row:</b> Displays the impact of reducing quantization levels (bit depth).
-            With fewer levels, the image becomes more posterized, losing smooth transitions in shades.
-        </li>
-    </ul>
-
-    <h2>Image Sampling</h2>
-
-    <p>
-        Sampling is the process of converting a continuous-tone image into a discrete form by
-        selecting a finite number of points, called pixels. The sampling process directly affects
-        the spatial resolution of the digital image.
+        The Canny edge detector is the first derivative of a Gaussian and closely
+        approximates the operator that optimizes the product of signal-to-noise ratio
+        and localization. The Canny edge detection algorithm begins by smoothing the
+        image using a Gaussian filter.
     </p>
 
     <p>
-        <b>1. Spatial Resolution and Sampling Rate</b><br>
-        Spatial resolution defines the number of pixels used to represent an image.
-        The sampling rate determines how frequently pixels are taken from the continuous image.
-        A higher sampling rate results in finer details and better quality, whereas a lower
-        sampling rate may lead to loss of critical image information.
+        Let I[i,j] represent the original image. The smoothed image is obtained as:
+    </p>
+
+    <center style="margin:25px 0;">
+    <math display="block">
+        <mi>S</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>]</mo>
+        <mo>=</mo>
+            <mi>S</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>]</mo>
+            <mo>=</mo>
+            <mi>G</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>;</mo><mi>σ</mi><mo>]</mo>
+            <mo>*</mo>
+            <mi>I</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>]</mo>
+        </math>
+    </center>
+
+    <p>
+        where σ is the standard deviation of the Gaussian distribution and controls
+        the amount of smoothing applied to the image.
     </p>
 
     <p>
-        <b>2. The Nyquist Sampling Theorem</b><br>
-        To accurately represent an image without introducing distortions, the Nyquist theorem
-        states that the sampling frequency should be at least twice the highest frequency present
-        in the image. If the sampling rate is too low, high-frequency components will be
-        misrepresented as lower frequencies, leading to aliasing artifacts.
+        The gradient of the smoothed image is then computed using finite difference
+        approximations to obtain the horizontal and vertical derivatives:
+    </p>
+
+    <center style="margin:25px 0;">
+    <math display="block">
+            <mi>P</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>]</mo>
+            <mo>≈</mo>
+            <mo>(</mo>
+            <mi>S</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j+1</mi><mo>]</mo>
+            <mo>-</mo>
+            <mi>S</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>]</mo>
+            <mo>+</mo>
+            <mi>S</mi><mo>[</mo><mi>i+1</mi><mo>,</mo><mi>j+1</mi><mo>]</mo>
+            <mo>-</mo>
+            <mi>S</mi><mo>[</mo><mi>i+1</mi><mo>,</mo><mi>j</mi><mo>]</mo>
+            <mo>)</mo><mo>/2</mo>
+        </math>
+    </center>
+
+    <br>
+
+    <center style="margin:25px 0;">
+    <math display="block">
+            <mi>Q</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>]</mo>
+            <mo>≈</mo>
+            <mo>(</mo>
+            <mi>S</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>]</mo>
+            <mo>-</mo>
+            <mi>S</mi><mo>[</mo><mi>i+1</mi><mo>,</mo><mi>j</mi><mo>]</mo>
+            <mo>+</mo>
+            <mi>S</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j+1</mi><mo>]</mo>
+            <mo>-</mo>
+            <mi>S</mi><mo>[</mo><mi>i+1</mi><mo>,</mo><mi>j+1</mi><mo>]</mo>
+            <mo>)</mo><mo>/2</mo>
+        </math>
+    </center>
+
+    <p>
+        The finite differences are averaged over a 2×2 neighbourhood so that the
+        horizontal and vertical derivatives are computed at the same location.
     </p>
 
     <p>
-        <b>3. Aliasing and Its Effects</b><br>
-        Aliasing occurs when the sampling rate is insufficient to capture the high-frequency
-        details in an image, resulting in distortions such as Moiré patterns, jagged edges,
-        and loss of fine details.
+        The gradient magnitude and orientation are then calculated using:
     </p>
 
-    <figure>
-        <img src="images/sampling.png" alt="Image Sampling">
-        <figcaption>
-            <b>Fig. 2 Generating a digital image (a) Continuous image (b) A scan line from A to B
-            in the continuous image, used to illustrate the concepts of sampling and quantization
-            (c) Sampling and Quantization (d) Digital scan line</b>
-        </figcaption>
-    </figure>
+    <center style="margin:25px 0;">
+    <math display="block">
+            <mi>M</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>]</mo>
+            <mo>=</mo>
+            <msqrt>
+                <msup>
+                    <mrow><mi>P</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>]</mo></mrow>
+                    <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <msup>
+                    <mrow><mi>Q</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>]</mo></mrow>
+                    <mn>2</mn>
+                </msup>
+            </msqrt>
+        </math>
+    </center>
 
-    <h2>Image Quantization</h2>
+    <br>
+
+    <center style="margin:25px 0;">
+    <math display="block">
+            <mi>θ</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>]</mo>
+            <mo>=</mo>
+            <mi>arctan</mi>
+            <mo>(</mo>
+            <mi>Q</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>]</mo>
+            <mo>,</mo>
+            <mi>P</mi><mo>[</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>]</mo>
+            <mo>)</mo>
+        </math>
+    </center>
 
     <p>
-        Quantization is the process of reducing the number of distinct intensity levels in an image,
-        converting a continuous range of values into a finite set.
+        The arctangent function generates an angle over the entire range of possible
+        directions. The Canny detector then performs non-maximum suppression and
+        hysteresis thresholding to produce thin and accurate edges.
     </p>
 
-    <p>
-        <b>1. Quantization Levels and Bit Depth</b><br>
-        The number of quantization levels defines how accurately pixel intensities are represented.
-        The bit depth of an image refers to the number of bits used to store the intensity of each pixel.
-    </p>
 
-    <p>
-        <b>2. Effects of Quantization</b>
-    </p>
+<h2>Comparison of Edge Detectors</h2>
 
-    <ul>
-        <li>
-            Higher Quantization Levels → More accurate intensity representation,
-            higher quality, but larger file size.
-        </li>
+<table>
+    <thead>
+        <tr>
+            <th>Edge Detector</th>
+            <th>Method</th>
+            <th>Advantages</th>
+            <th>Limitations</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Roberts</td>
+            <td>Gradient Based</td>
+            <td>
+                <ol>
+                    <li>Easy and simple computation.</li>
+                    <li>Edges detected with orientation.</li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                    <li>Highly sensitive to noise.</li>
+                    <li>Less accurate edge detection.</li>
+                    <li>Less reliable.</li>
+                </ol>
+            </td>
+        </tr>
 
-        <li>
-            Lower Quantization Levels → Reduces file size but can cause visual
-            artifacts such as false contouring and loss of detail.
-        </li>
-    </ul>
+        <tr>
+            <td>Sobel</td>
+            <td>Gradient Based</td>
+            <td>
+                <ol>
+                    <li>Easy implementation.</li>
+                    <li>Provides edge orientation.</li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                    <li>Sensitive to noise.</li>
+                    <li>Moderate accuracy.</li>
+                    <li>May blur fine edges.</li>
+                </ol>
+            </td>
+        </tr>
 
-    <figure>
-        <img src="images/continuos.jpg" alt="Continuous Image">
-        <figcaption>
-            <b>Fig. 3 (a) Continuous image projected onto a sensor array
-            (b) Result of image sampling and quantization.</b>
-        </figcaption>
-    </figure>
+        <tr>
+            <td>Prewitt</td>
+            <td>Gradient Based</td>
+            <td>
+                <ol>
+                    <li>Simple computation.</li>
+                    <li>Efficient for basic edge detection.</li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                    <li>Noise sensitive.</li>
+                    <li>Less accurate than Sobel.</li>
+                    <li>Weak edge localization.</li>
+                </ol>
+            </td>
+        </tr>
 
-    <h2>Applications of Image Sampling and Quantization</h2>
+                <tr>
+            <td>Canny</td>
+            <td>Gaussian Based</td>
+            <td>
+                <ol>
+                    <li>Improved signal-to-noise ratio.</li>
+                    <li>Suitable for noisy images.</li>
+                    <li>Accurate edge localization.</li>
+                    <li>Produces thin and continuous edges.</li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                    <li>Computationally expensive.</li>
+                    <li>More complex implementation.</li>
+                    <li>Threshold selection affects performance.</li>
+                </ol>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-    <ul>
-        <li>Medical Imaging - Ensures accurate diagnosis while minimizing storage and processing requirements.</li>
+<h2>Conclusion</h2>
 
-        <li>Image Compression - Used in JPEG and PNG formats to optimize storage without significant quality loss.</li>
+<p>
+Edge detection is one of the most important techniques in image segmentation and image analysis.
+Gradient-based operators such as Roberts, Sobel, and Prewitt detect edges using first-order derivatives,
+while the Laplacian uses second-order derivatives. Among these methods, the Canny edge detector is widely
+considered one of the most effective because it combines Gaussian smoothing, gradient computation,
+non-maximum suppression, and hysteresis thresholding to achieve accurate and reliable edge detection.
+</p>
 
-        <li>Computer Vision and AI - Properly sampled and quantized images improve object detection and machine learning accuracy.</li>
+<p>
+Proper edge detection helps reduce image complexity, improve object recognition, and enhance the performance
+of various image processing and computer vision applications, including medical imaging, remote sensing,
+industrial inspection, and autonomous systems.
+</p>
 
-        <li>Remote Sensing - Satellite images require high-resolution sampling for climate monitoring and urban planning.</li>
-    </ul>
-
-    <h2>Conclusion</h2>
-
-    <p>
-        Image sampling and quantization are essential steps in digital image processing that impact
-        resolution, storage efficiency, and visual quality. Proper selection of sampling rates and
-        quantization levels ensures a balance between image fidelity and computational efficiency,
-        benefiting diverse fields such as medical imaging, AI, remote sensing, and digital media.
-    </p>
+</div>
 
 </div>
 
 </section>
+
+
    <section id="progressreport" class="section-content vl-card mb-8 p-6 animate-fadeInUp hidden">
           <div class="border-l-4 border-orange-600 pl-4 mb-4 flex items-center justify-between">
             <div class="flex items-center">
